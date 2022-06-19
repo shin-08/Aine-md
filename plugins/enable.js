@@ -60,14 +60,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     case 'document':
       chat.useDocument = isEnable
       break
-    case 'public':
-      isAll = true
-      if (!isROwner) {
-        global.dfail('rowner', m, conn)
-        throw false
-      }
-      global.opts['self'] = !isEnable
-      break
     case 'antilink':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -77,15 +69,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.antiLink = isEnable
       break 
-    case 'antisticker':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiSticker = isEnable
-      break
     case 'autosticker':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -94,24 +77,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
       }
       chat.stiker = isEnable
-      break
-    case 'toxic':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiToxic = !isEnable
-      break
-    case 'antitoxic':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiToxic = isEnable
       break
     case 'autolevelup':
       isUser = true
@@ -136,14 +101,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         throw false
       }
       global.opts['restrict'] = isEnable
-      break
-    case 'nyimak':
-      isAll = true
-      if (!isROwner) {
-        global.dfail('rowner', m, conn)
-        throw false
-      }
-      global.opts['nyimak'] = isEnable
       break
     case 'autoread':
       isAll = true
@@ -194,18 +151,14 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 List option:
 | welcome
 | delete
-| public
 | antilink
 | antidelete
-| antitoxic
-| antisticker
 | autosticker
 | autolevelup
 | detect
 | document
 | whitelistmycontacts
 | restrict
-| nyimak
 | autoread
 | pconly
 | gconly
