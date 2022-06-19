@@ -31,6 +31,7 @@ let handler = async (m, { conn, usedPrefix, owner }) => {
             let legendary = (_legendary * 1)
             let itemrand = [`*Selamat anda mendapatkan item rare yaitu*\n${mythic} Mythic Crate`,`*Selamat kamu mendapatkan item rare yaitu*\n${legendary} Legendary Crate`]
             let rendem = itemrand[Math.floor(Math.random() * itemrand.length)]
+            let gambar1 = 'https://telegra.ph/file/da6679baefb4642c4ab8c.jpg'
             let str = `
 Nyawa mu berkurang -${health * 1} karena Kamu telah berpetualang sampai ${pickRandom(['Jepang', 'Korea', 'Bali', 'Amerika', 'Iraq', 'Arab', 'Pakistan', 'German', 'Finlandia', 'Ke bawa dunia mimpi', 'Ujung dunia', 'Mars', 'Bulan', 'Pluto', 'Matahari', 'Hatinya dia', '...'])} dan mendapatkan
 *exp:* ${exp} 
@@ -40,7 +41,7 @@ Nyawa mu berkurang -${health * 1} karena Kamu telah berpetualang sampai ${pickRa
 `.trim()
             
             setTimeout(() => {
-                  conn.sendMessage(m.chat, { text: str }, { quoted: m })
+                  conn.sendButtonImg(m.chat, gambar1, str, wm2, 'Inventory', '.inv', m)
                   }, 0)
             setTimeout(() => {
                    conn.reply(m.chat, rendem, m)
@@ -59,7 +60,7 @@ Nyawa mu berkurang -${health * 1} karena Kamu telah berpetualang sampai ${pickRa
             global.db.data.users[m.sender].legendary += legendary * 1
             global.db.data.users[m.sender].lastadventure = new Date * 1
             } else conn.reply(m.chat, `Anda sudah berpetualang dan kelelahan, silahkan coba *${timers}* lagi`, m)
-        } else conn.reply(m.chat, 'Minimal 80 health untuk bisa berpetualang, beli nyawa dulu dengan ketik *' + usedPrefix + 'shop buy potion <jumlah>*\ndan ketik *' + usedPrefix + 'use potion <jumlah>*', m)
+        } else conn.reply(m.chat, 'Minimal 80 health untuk bisa berpetualang, beli nyawa dulu dengan ketik *' + usedPrefix + 'shop buy potion <jumlah>*\ndan ketik *' + usedPrefix + 'heal', m)
     } catch (e) {
         console.log(e)
         conn.reply(m.chat, 'Error', m)
@@ -70,7 +71,7 @@ handler.help = ['adventure']
 handler.tags = ['rpg']
 handler.command = /^(adventure)$/i
 handler.limit = true
-handler.group = true
+handler.group = false
 handler.fail = null
 
 module.exports = handler
