@@ -64,7 +64,7 @@ global.wm = 'Shinz-ルミネ'
 global.wm2 = '「 Lumine-md あ⁩ 」'
 
 // Thumbnail 
-global.thumb = 'https://telegra.ph/file/479e596b9502f7803879d.jpg'
+global.thumb = 'https://telegra.ph/file/c301f7c1d91305d8d3b5b.jpg'
 global.fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=smurfs-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 
 // Link 
