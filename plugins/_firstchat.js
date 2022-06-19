@@ -13,9 +13,15 @@ handler.before = async function (m) {
     if (new Date - user.pc < 86400000) return // setiap 24 jam sekali
  //   await conn.modifyChat(m.chat, 'mute', -Math.floor(new Date / 1e3) * 1e3 - 1e3).catch(console.log)
     await this.sendButton(m.chat, `
-Hai ${ucapan()} *${username.replace(/@.+/, '')}* 👋
+㊧  *Hai kak ${username.replace(/@.+/, '')}*
 
-${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'Ada yang bisa saya bantu?'}
+${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'ム  _Aku adalah bot whatsapp yang di kembangkan oleh Shinz!_
+
+*• ketik .request*
+_untuk request fitur_
+
+*• ketik .report*
+_untuk report fitur yang error_'}
 `.trim(), wm, null, [['Menu', '/menu']], m)
     user.pc = new Date * 1
 }
