@@ -8,6 +8,7 @@ handler.all = async function (m, { isBlocked }) {
     let teks = `Invite Group
 • 15 Day / Rp 10k
 • 30 Day / Rp 15k
+• Permanen / Rp 20k
 
 Jika berminat hubungi: @${global.owner[0]} untuk order:)
 `
