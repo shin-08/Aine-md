@@ -2,9 +2,9 @@ let fs = require('fs')
 let chalk = require('chalk')
 
 global.owner = [
-  ['62895330379186'],
-  ['62895330379186'],
-  ['62895330379186', 'Owner', true]
+  ['6283148375193'],
+  ['6283148375193'],
+  ['6283148375193', 'Shinz-ルミネ', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.mods = [] // Want some help?
@@ -40,8 +40,8 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 const spack = fs.readFileSync("lib/exif.json")
 const stickerpack = JSON.parse(spack)
 if (stickerpack.spackname == '') {
-  var sticker_name = '@ainee_bot'
-  var sticker_author = 'Aine'
+  var sticker_name = 'Shinz'
+  var sticker_author = 'ルミネ'
 } else {
   var sticker_name = stickerpack.spackname
   var sticker_author = stickerpack.sauthor
@@ -58,7 +58,24 @@ fs.watchFile(file_exif, () => {
 // Sticker WM
 global.packname = sticker_name
 global.author = sticker_author
-global.wm = '© Aine'
+
+// Watermark
+global.wm = 'Shinz-ルミネ'
+global.wm2 = '「 Lumine-md あ⁩ 」'
+
+// Thumbnail 
+global.thumb = 'https://telegra.ph/file/479e596b9502f7803879d.jpg'
+global.fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=smurfs-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
+
+// Link 
+global.gc = 'https://chat.whatsapp.com/JQt8UkAG4FjATRNRVqoFb2'
+global.web = 'shinz-06.github.io'
+global.youtube = 'https://youtube.com/channel/UC_ief-NaAtqbY1J6BIlrqBQ'
+
+// donasi
+global.gopay = '083148375193'
+global.dana = '083148375193'
+global.pulsa = '083148375193'
 
 global.multiplier = 1000 // The higher, The harder levelup
 
