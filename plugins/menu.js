@@ -1,4 +1,4 @@
-const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
+let { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, downloadContentFromMessage, downloadHistory, proto, getMessage, generateWAMessageContent, prepareWAMessageMedia } = require('@adiwajshing/baileys')
 let fs = require('fs')
 let path = require('path')
 let fetch = require('node-fetch')
@@ -9,6 +9,7 @@ let tags = {
   'rpg': 'Rpg',
   'game': 'Game',
   'xp': 'Exp, Limit & Pay',
+  'anime': 'Anime',
   'sticker': 'Sticker',
   'main': 'Main',
   'kerang': 'Kerang Ajaib',
@@ -35,25 +36,24 @@ let tags = {
 }
 const defaultMenu = {
   before: `
-Hai, %ucapan %name! 👋
-  
-*Waktu:* 
-%wib WIB
-%wita WITA
-%wit WIT
-*Hari:* %week
-*Tanggal:* %date
-*Uptime:* %uptime (%muptime)
+ム Hai, %ucapan %name! 
 
-*Limit:* %limit
-*Level:* %level
-*XP:* %exp
+㊨ *Waktu :*
+_*hari : %week*_
+_*tanggal : %date*_
+_*runtime : %uptime*_
+
+₪ *u s e r*
+_*name : %name*_
+_*limit : %limit*_
+_*level : %level*_
+_*xp : %exp*_
 %readmore`.trimStart(),
-  header: ' *%category*',
-  body: ' • %cmd %islimit %isPremium',
+  header: '㊧ *%category*',
+  body: ' • %cmd',
   footer: '\n',
   after: `*Made by ♡*
-*%npmname* | %version
+*Shinz* | %version
 ${'```%npmdesc```'}
 `,
 }
@@ -157,11 +157,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.sendHydrated(m.chat, text.trim(), 'Ⓟ premium | Ⓛ limit', null, 'https://aiinne.github.io/', 'Website', '', '', [
-      ['Donate', '/donasi'],
-      ['Sewa Bot', '/sewa'],
-      ['Owner', '/owner']
-    ], m)
+    conn.sendHydrated(m.chat, text.trim(), wm, thumb, "https://chat.whatsapp.com/JQt8UkAG4FjATRNRVqoFb2", "official group", null,null, [['donasi', '.donasi'], ['owner', '.owner'],['「 sewa bot 」', '.sewa']], m)
     /*let url = `https://telegra.ph/file/ab1df70dfd5c2bac64da1.jpg`.trim()
     let res = await fetch(url)
     let buffer = await res.buffer()
